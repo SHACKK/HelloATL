@@ -1,0 +1,29 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {9f811706-c910-458e-b526-0954b7b14ec6} = s 'ATLSimpleObject class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{e5467b0f-409b-4566-a638-955ede39099b}'
+			Version = s '1.0'
+		}
+	}
+	NoRemove SystemFileAssociations
+	{
+		NoRemove .xlsx
+		{
+			NoRemove ShellEx
+			{
+				NoRemove ContextMenuHandlers
+				{
+					ForceRemove SimpleShlExt = s '{9f811706-c910-458e-b526-0954b7b14ec6}'
+				}
+			}
+		}
+	}
+}
